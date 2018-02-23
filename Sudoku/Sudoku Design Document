@@ -1,0 +1,50 @@
+The goal of this challenge is to build a console application which
+will generate sudoku puzzles. As of the time of writing this, I
+have no idea how difficult of a challenge this will be. My intuition
+suggests that my programming skills as well as available computing
+power are enough to embark.
+
+The program will be written in Java, and will utilize OOP
+principles and TDD.
+
+Side note: This problem sounds like a proper job for Haskell.
+
+It has been mathematically proven that in order to guarantee that
+a sudoku puzzle is solvable (has only one answer), you need to give
+the player at least 17 clues and a typical sudoku puzzle found in
+newspapers has 25 clues.
+
+Bonus points: Ask the user how many clues he would like to start
+the game with.
+
+Possible Solutions:
+1. Generate a new solved board:
+This function needs to generate a different board every time it's
+called. Using something like seed would be the way to go it seems.
+
+2. Find an unsolved board that has n clues:
+Delete a digit and check if it still solvable. If it is,
+increment the number of digits removed and repeat this step
+with a different digit. Else mark the digit a dead end and remove
+a different digit. If all remaining digits are removed this way and
+they are all found to be dead ends, mark the previously removed
+digit as solvable with x number of clues. If the clue number is
+less than the requested clue number fill out the digit again and
+repeat this step removing a different digit. If the clue number is
+the same as the requested number return the game board.
+
+Possible Roadblocks:
+1. The program might cause a stack overflow checking all possible
+outcomes.
+
+Side Note #1: The minimum amount of bits we need
+in memory for each field of the sudoku puzzle is 4. It can hold
+numbers 1 to 9, as well as a number that will indicate an empty
+field like 0. There should be a way to use a 4 bit unsigned integer
+in Java. If we manage that, we could save 2 billion such integers
+per gigabyte of RAM.
+
+Side Note #2: The programs I've written so far are mostly stored
+in RAM. Do we want to store everything in RAM or do I want to save
+some of those files to long term storage, and only use RAM for the
+things which are currently being worked on?
